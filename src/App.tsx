@@ -5,10 +5,8 @@ import TrustedBy from './components/TrustedBy';
 import AboutUs from './components/AboutUs';
 import OurFeatures from './components/OurFeatures';
 import BenefitsSection from './components/BenefitsSection';
-import Footer from './components/Footer';
-
-import TestimonialsAndCTA from './components/TestimonialsAndCTA';
 import CoreValuesSection from './components/CoreValuesSection';
+import FooterSection from './components/FooterSection';
 
 const App: React.FC = () => {
   return (
@@ -20,9 +18,7 @@ const App: React.FC = () => {
       <OurFeatures/>
       <BenefitsSection/>
       <CoreValuesSection/>
-      <TestimonialsAndCTA/>
-      
-      <Footer/>
+  <FooterSection/>
       {/* Add more sections like Stats, AboutUs, Features, etc. */}
     </div>
   );

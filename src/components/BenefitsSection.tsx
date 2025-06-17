@@ -1,5 +1,8 @@
 import React from 'react';
 
+// Import the image from the local assets folder
+import benefitPhoneImg from '../assets/benefit-phone.jpg';
+
 const BenefitsSection: React.FC = () => {
   const sectionStyle: React.CSSProperties = {
     display: 'flex',
@@ -17,10 +20,11 @@ const BenefitsSection: React.FC = () => {
     gap: '48px',
     alignItems: 'center',
     justifyContent: 'space-between',
+    flexWrap: 'wrap',
   };
 
   const leftStyle: React.CSSProperties = {
-    flex: 1,
+    flex: '1 1 400px',
   };
 
   const titleStyle: React.CSSProperties = {
@@ -53,7 +57,7 @@ const BenefitsSection: React.FC = () => {
   };
 
   const rightStyle: React.CSSProperties = {
-    flex: 1,
+    flex: '1 1 400px',
     position: 'relative',
   };
 
@@ -74,6 +78,7 @@ const BenefitsSection: React.FC = () => {
     fontSize: '14px',
     fontWeight: 500,
     color: '#111827',
+    whiteSpace: 'nowrap',
   });
 
   return (
@@ -104,7 +109,7 @@ const BenefitsSection: React.FC = () => {
         {/* Right Side */}
         <div style={rightStyle}>
           <img
-            src="https://i.ibb.co/z6Z6nqW/benefit-phone.jpg"
+            src={benefitPhoneImg}
             alt="Benefits"
             style={imageStyle}
           />

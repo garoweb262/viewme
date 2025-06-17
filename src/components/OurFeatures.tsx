@@ -1,5 +1,10 @@
 import React from 'react';
 
+// Import images from local assets
+import boostEngagementImg from '../assets/boost-engagement.jpg';
+import monetizationImg from '../assets/monetization.jpg';
+import seamlessIntegrationImg from '../assets/seamless-integration.jpg';
+
 const OurFeatures: React.FC = () => {
   const containerStyle: React.CSSProperties = {
     backgroundColor: '#F9FAFB',
@@ -13,13 +18,14 @@ const OurFeatures: React.FC = () => {
     maxWidth: '1200px',
     width: '100%',
     display: 'flex',
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
     gap: '40px',
     alignItems: 'flex-start',
   };
 
   const leftSectionStyle: React.CSSProperties = {
-    flex: 1,
+    flex: '1 1 300px',
   };
 
   const headingStyle: React.CSSProperties = {
@@ -49,7 +55,7 @@ const OurFeatures: React.FC = () => {
   };
 
   const rightSectionStyle: React.CSSProperties = {
-    flex: 2,
+    flex: '2 1 600px',
     display: 'flex',
     gap: '24px',
     justifyContent: 'flex-start',
@@ -94,7 +100,9 @@ const OurFeatures: React.FC = () => {
           <p style={paragraphStyle}>
             Discover how ViewMe makes it easier to boost your presence, grow your community, and monetize your social media platforms.
           </p>
-          <button style={buttonStyle}>Install App</button>
+          <button style={buttonStyle} type="button">
+            Install App
+          </button>
         </div>
 
         {/* Right Section */}
@@ -102,8 +110,8 @@ const OurFeatures: React.FC = () => {
           {/* Boost Engagement */}
           <div style={cardStyle}>
             <img
-              src="https://i.ibb.co/qBNCTbc/boost-engagement.jpg"
-              alt="Boost Engagement"
+              src={boostEngagementImg}
+              alt="Boost Engagement Feature"
               style={imageStyle}
             />
             <h3 style={titleStyle}>Boost Engagement</h3>
@@ -115,8 +123,8 @@ const OurFeatures: React.FC = () => {
           {/* Monetization */}
           <div style={cardStyle}>
             <img
-              src="https://i.ibb.co/nrDH5Cb/monetization.jpg"
-              alt="Monetization"
+              src={monetizationImg}
+              alt="Monetization Feature"
               style={imageStyle}
             />
             <h3 style={titleStyle}>Monetization</h3>
@@ -128,8 +136,8 @@ const OurFeatures: React.FC = () => {
           {/* Seamless Integration */}
           <div style={cardStyle}>
             <img
-              src="https://i.ibb.co/ySvvYv6/seamless-integration.jpg"
-              alt="Seamless Integration"
+              src={seamlessIntegrationImg}
+              alt="Seamless Integration Feature"
               style={imageStyle}
             />
             <h3 style={titleStyle}>Seamless Integration</h3>
