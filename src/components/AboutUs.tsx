@@ -20,11 +20,7 @@ const AboutUs: React.FC = () => {
     title,
     description,
   }: {
-
-    icon: JSX. Element;
-
     icon: React.ReactNode;
-
     title: string;
     description: string;
   }) => (
@@ -54,6 +50,7 @@ const AboutUs: React.FC = () => {
           fontWeight: '600',
           color: '#111827',
           marginBottom: '4px',
+          textAlign: 'center',
         }}
       >
         {title}
@@ -63,6 +60,7 @@ const AboutUs: React.FC = () => {
           color: '#4B5563',
           fontSize: '12px',
           lineHeight: '1.5',
+          textAlign: 'center',
         }}
       >
         {description}
@@ -150,69 +148,52 @@ const AboutUs: React.FC = () => {
             style={{
               display: 'grid',
               gap: '24px',
-              gridTemplateColumns: '1fr',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
             }}
           >
-            <div
-              style={{
-                display: 'grid',
-                gap: '24px',
-                gridTemplateColumns: '1fr',
-              }}
-            >
-              {/* Responsive layout */}
-              <div
-                style={{
-                  display: 'grid',
-                  gap: '24px',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                }}
-              >
-                <FeatureBox
-                  icon={
-                    <svg style={{ width: '24px', height: '24px' }} viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
-                      <path
-                        fillRule="evenodd"
-                        d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  }
-                  title="Social Media Growth:"
-                  description="ViewMe simplifies the complexities of social media management and growth."
-                />
+            <FeatureBox
+              icon={
+                <svg style={{ width: '24px', height: '24px' }} viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                  <path
+                    fillRule="evenodd"
+                    d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              }
+              title="Social Media Growth"
+              description="ViewMe simplifies the complexities of social media management and growth."
+            />
 
-                <FeatureBox
-                  icon={
-                    <svg style={{ width: '24px', height: '24px' }} viewBox="0 0 20 20" fill="currentColor">
-                      <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0z" />
-                      <path
-                        fillRule="evenodd"
-                        d="M7.293 9.293a1 1 0 011.414 0L10 10.586l1.293-1.293a1 1 0 111.414 1.414l-2 2a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  }
-                  title="Authentic Connections:"
-                  description="Create meaningful relationships with your audience and users."
-                />
+            <FeatureBox
+              icon={
+                <svg style={{ width: '24px', height: '24px' }} viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path
+                    fillRule="evenodd"
+                    d="M7.293 9.293a1 1 0 011.414 0L10 10.586l1.293-1.293a1 1 0 111.414 1.414l-2 2a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              }
+              title="Authentic Connections"
+              description="Create meaningful relationships with your audience and users."
+            />
 
-                <FeatureBox
-                  icon={
-                    <svg style={{ width: '24px', height: '24px' }} viewBox="0 0 20 20" fill="currentColor">
-                      <path
-                        fillRule="evenodd"
-                        d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm0 2h10a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1zm7 6a1 1 0 100-2 1 1 0 000 2z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                  }
-                  title="Empower Monetization:"
-                  description="Gain access to partnerships, sponsorships, and affiliate opportunities."
-                />
-              </div>
-            </div>
+            <FeatureBox
+              icon={
+                <svg style={{ width: '24px', height: '24px' }} viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    fillRule="evenodd"
+                    d="M5 4a3 3 0 00-3 3v6a3 3 0 003 3h10a3 3 0 003-3V7a3 3 0 00-3-3H5zm0 2h10a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1V7a1 1 0 011-1zm7 6a1 1 0 100-2 1 1 0 000 2z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              }
+              title="Empower Monetization"
+              description="Gain access to partnerships, sponsorships, and affiliate opportunities."
+            />
           </div>
         </div>
       </div>
