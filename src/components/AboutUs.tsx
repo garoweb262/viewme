@@ -20,7 +20,7 @@ const AboutUs: React.FC = () => {
     title,
     description,
   }: {
-    icon: JSX.Element;
+    icon: JSX. Element;
     title: string;
     description: string;
   }) => (
