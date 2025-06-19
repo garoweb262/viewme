@@ -3,106 +3,70 @@ import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/viewme-logo.png';
 
 const Navbar: React.FC = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
   const location = useLocation();
-
-  useEffect(() => {
-    // Auto close menu when route changes
-    setMenuOpen(false);
-  }, [location]);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    handleResize(); // Set on load
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
 
-  const navLinks = [
-    { name: 'Home', to: '/' },
-    { name: 'Core Values', to: '/core-values' },
-    { name: 'FAQs', to: '#faqs' }, // This can be updated when page is ready
-    { name: 'About Us', to: '#about-us' }, // Same here
+  const navItems = [
+    { label: 'Home', path: '/' },
+    { label: 'Core Values', path: '/core-values' },
+    { label: 'FAQs', path: '#faqs' },
+    { label: 'About Us', path: '#about-us' },
   ];
 
   return (
-    <nav
-      style={{
-        backgroundColor: '#FBF6C4',
-        boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
-        position: 'fixed',
-        top: 0,
-        width: '100%',
-        zIndex: 1000,
-        padding: '1rem 0',
-      }}
-    >
-      <div
-        style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '0 1.5rem',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}
-      >
+    <nav style={{
+      backgroundColor: '#FBF6C4',
+      boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+      position: 'fixed',
+      top: 0,
+      width: '100%',
+      zIndex: 1000,
+      padding: '1rem 0',
+    }}>
+      <div style={{
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '0 1.5rem',
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+      }}>
         {/* Logo */}
-        <Link to="/">
-          <img src={logo} alt="ViewMe Logo" style={{ height: '40px', width: 'auto' }} />
-        </Link>
+        <img src={logo} alt="ViewMe Logo" style={{ height: '40px' }} />
 
-        {/* Desktop Menu */}
+        {/* Desktop Nav Links */}
         {!isMobile && (
           <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
-            <ul
-              style={{
-                display: 'flex',
-                listStyle: 'none',
-                gap: '2rem',
-                margin: 0,
-                padding: 0,
-              }}
-            >
-              {navLinks.map((link, index) => (
-                <li key={index}>
-                  {link.to.startsWith('/') ? (
+            <ul style={{ display: 'flex', listStyle: 'none', gap: '2rem', margin: 0, padding: 0 }}>
+              {navItems.map((item, index) => {
+                const isActive = location.pathname === item.path;
+                return (
+                  <li key={index}>
                     <Link
-                      to={link.to}
+                      to={item.path}
                       style={{
                         textDecoration: 'none',
                         color: '#666',
                         fontWeight: 500,
-                        transition: 'color 0.3s',
+                        borderBottom: isActive ? '2px solid #f4a261' : 'none',
+                        paddingBottom: '4px',
                       }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = '#f4a261')}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = '#666')}
                     >
-                      {link.name}
+                      {item.label}
                     </Link>
-                  ) : (
-                    <a
-                      href={link.to}
-                      style={{
-                        textDecoration: 'none',
-                        color: '#666',
-                        fontWeight: 500,
-                        transition: 'color 0.3s',
-                      }}
-                      onMouseEnter={(e) => (e.currentTarget.style.color = '#f4a261')}
-                      onMouseLeave={(e) => (e.currentTarget.style.color = '#666')}
-                    >
-                      {link.name}
-                    </a>
-                  )}
-                </li>
-              ))}
+                  </li>
+                );
+              })}
             </ul>
-
             <button
               style={{
                 backgroundColor: '#f4a261',
@@ -112,74 +76,47 @@ const Navbar: React.FC = () => {
                 borderRadius: '5px',
                 cursor: 'pointer',
                 fontWeight: 500,
-                transition: 'background-color 0.3s',
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = '#e07a5f')}
-              onMouseLeave={(e) => (e.currentTarget.style.backgroundColor = '#f4a261')}
             >
               Contact Us
             </button>
           </div>
         )}
 
-        {/* Hamburger Icon */}
+        {/* Hamburger Menu (Mobile) */}
         {isMobile && (
-          <div onClick={toggleMenu} style={{ cursor: 'pointer', display: 'flex', flexDirection: 'column' }}>
-            <span style={{ height: '3px', width: '25px', background: '#333', marginBottom: '5px' }} />
-            <span style={{ height: '3px', width: '25px', background: '#333', marginBottom: '5px' }} />
-            <span style={{ height: '3px', width: '25px', background: '#333' }} />
+          <div onClick={toggleMenu} style={{ cursor: 'pointer' }}>
+            <span style={{ height: '3px', width: '25px', background: '#333', display: 'block', marginBottom: '5px' }}></span>
+            <span style={{ height: '3px', width: '25px', background: '#333', display: 'block', marginBottom: '5px' }}></span>
+            <span style={{ height: '3px', width: '25px', background: '#333', display: 'block' }}></span>
           </div>
         )}
       </div>
 
-      {/* Mobile Dropdown Menu */}
+      {/* Mobile Menu */}
       {isMobile && menuOpen && (
-        <div
-          style={{
-            background: '#FBF6C4',
-            width: '100%',
-            padding: '1rem 1.5rem',
-            boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '1rem',
-          }}
-        >
-          {navLinks.map((link, index) =>
-            link.to.startsWith('/') ? (
-              <Link
-                key={index}
-                to={link.to}
-                style={{
-                  textDecoration: 'none',
-                  color: '#666',
-                  fontWeight: 500,
-                  transition: 'color 0.3s',
-                }}
-                onClick={() => setMenuOpen(false)}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#f4a261')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = '#666')}
-              >
-                {link.name}
-              </Link>
-            ) : (
-              <a
-                key={index}
-                href={link.to}
-                style={{
-                  textDecoration: 'none',
-                  color: '#666',
-                  fontWeight: 500,
-                  transition: 'color 0.3s',
-                }}
-                onClick={() => setMenuOpen(false)}
-                onMouseEnter={(e) => (e.currentTarget.style.color = '#f4a261')}
-                onMouseLeave={(e) => (e.currentTarget.style.color = '#666')}
-              >
-                {link.name}
-              </a>
-            )
-          )}
+        <div style={{
+          background: '#FBF6C4',
+          width: '100%',
+          padding: '1rem 1.5rem',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '1rem',
+        }}>
+          {navItems.map((item, index) => (
+            <Link
+              key={index}
+              to={item.path}
+              onClick={() => setMenuOpen(false)}
+              style={{
+                textDecoration: 'none',
+                color: location.pathname === item.path ? '#f4a261' : '#666',
+                fontWeight: 500,
+              }}
+            >
+              {item.label}
+            </Link>
+          ))}
         </div>
       )}
     </nav>

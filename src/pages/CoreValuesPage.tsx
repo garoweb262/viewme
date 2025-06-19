@@ -42,15 +42,20 @@ const values = [
 const CoreValuesPage: React.FC = () => {
   return (
     <div style={{ paddingTop: '100px', backgroundColor: '#fffef6', fontFamily: 'Arial, sans-serif' }}>
-      <h2 style={{
-        fontSize: '32px',
-        textAlign: 'center',
-        fontWeight: 'bold',
-        marginBottom: '40px',
-        color: '#111827',
-      }}>
-        Core Values
-      </h2>
+      <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+        <h2
+          style={{
+            fontSize: '32px',
+            fontWeight: 'bold',
+            color: '#111827',
+            paddingBottom: '10px',
+            display: 'inline-block',
+            borderBottom: '3px solid #FBBF24',
+          }}
+        >
+          Core Values
+        </h2>
+      </div>
 
       {values.map((val, idx) => (
         <div
@@ -63,6 +68,9 @@ const CoreValuesPage: React.FC = () => {
             padding: '40px 20px',
             gap: '40px',
             flexWrap: 'wrap',
+            opacity: 0,
+            animation: `fadeIn 0.7s ease forwards`,
+            animationDelay: `${idx * 0.2}s`,
           }}
         >
           <img
@@ -76,23 +84,27 @@ const CoreValuesPage: React.FC = () => {
             }}
           />
           <div style={{ maxWidth: '600px' }}>
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-              marginBottom: '8px',
-            }}>
-              <div style={{
-                backgroundColor: '#FBBF24',
-                width: '32px',
-                height: '32px',
-                borderRadius: '50%',
+            <div
+              style={{
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center',
-                color: '#fff',
-                fontWeight: 'bold',
-              }}>
+                gap: '12px',
+                marginBottom: '8px',
+              }}
+            >
+              <div
+                style={{
+                  backgroundColor: '#FBBF24',
+                  width: '32px',
+                  height: '32px',
+                  borderRadius: '50%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#fff',
+                  fontWeight: 'bold',
+                }}
+              >
                 {idx + 1}
               </div>
               <h3 style={{ fontSize: '20px', fontWeight: 'bold', color: '#111827', margin: 0 }}>{val.title}</h3>
@@ -102,7 +114,24 @@ const CoreValuesPage: React.FC = () => {
         </div>
       ))}
 
+      {/* Footer */}
       <FooterSection />
+
+      {/* Inline keyframe animation */}
+      <style>
+        {`
+          @keyframes fadeIn {
+            to {
+              opacity: 1;
+              transform: translateY(0px);
+            }
+            from {
+              opacity: 0;
+              transform: translateY(30px);
+            }
+          }
+        `}
+      </style>
     </div>
   );
 };
