@@ -1,114 +1,115 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import FooterSection from '../components/FooterSection';
+import agentsImage from '../assets/agents.png'; // ✅ Your image path
 
-const ContactUsPage: React.FC = () => {
+const ContactPage: React.FC = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const timeout = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timeout);
+  }, []);
+
   return (
-    <div
-      style={{
-        paddingTop: '100px',
-        paddingBottom: '40px',
-        fontFamily: 'Arial, sans-serif',
-        background: '#fffef6',
-        minHeight: '100vh',
-        boxSizing: 'border-box',
-      }}
-    >
-      <h2
-        style={{
-          fontSize: '32px',
-          fontWeight: 'bold',
-          color: '#111827',
-          paddingBottom: '10px',
-          display: 'block',
-          textAlign: 'center',
-          borderBottom: '3px solid #FBBF24',
-          width: 'fit-content',
-          margin: '0 auto 40px',
-        }}
-      >
-        Contact Us
-      </h2>
+    <div style={{ background: '#fffef6', paddingTop: '100px', fontFamily: 'Arial, sans-serif' }}>
+      <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+        <h2
+          style={{
+            fontSize: '32px',
+            fontWeight: 'bold',
+            color: '#111827',
+            paddingBottom: '10px',
+            display: 'inline-block',
+            borderBottom: '3px solid #FBBF24',
+          }}
+        >
+          Contact Us
+        </h2>
+      </div>
 
       <div
         style={{
-          maxWidth: '900px',
+          maxWidth: '1100px',
           margin: '0 auto',
+          padding: '0 16px 48px',
           display: 'flex',
-          flexDirection: 'column',
-          gap: '32px',
-          padding: '0 16px',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          gap: '24px',
+          opacity: isVisible ? 1 : 0,
+          transform: isVisible ? 'translateY(0)' : 'translateY(40px)',
+          transition: 'opacity 0.6s ease-out, transform 0.6s ease-out',
         }}
       >
-        <p style={{ fontSize: '15px', color: '#4B5563', textAlign: 'center' }}>
-          We'd love to hear from you! Whether you have a question about features, pricing, or anything else — our team is ready to answer all your questions.
-        </p>
-
+        {/* Form Section */}
         <div
           style={{
-            background: '#fff',
-            padding: '24px',
-            borderRadius: '12px',
-            boxShadow: '0 4px 10px rgba(0,0,0,0.05)',
+            background: '#1f2937',
+            padding: '32px',
+            borderRadius: '16px',
+            color: '#fff',
+            flex: '1 1 100%',
+            maxWidth: '500px',
             width: '100%',
-            maxWidth: '600px',
-            margin: '0 auto',
             boxSizing: 'border-box',
+            margin: '0 auto',
           }}
         >
-          <form style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            <input
-              type="text"
-              placeholder="Your Name"
-              required
-              style={{
-                padding: '12px',
-                borderRadius: '8px',
-                border: '1px solid #D1D5DB',
-                fontSize: '14px',
-                width: '100%',
-              }}
-            />
-            <input
-              type="email"
-              placeholder="Your Email"
-              required
-              style={{
-                padding: '12px',
-                borderRadius: '8px',
-                border: '1px solid #D1D5DB',
-                fontSize: '14px',
-                width: '100%',
-              }}
-            />
-            <textarea
-              placeholder="Your Message"
-              rows={5}
-              required
-              style={{
-                padding: '12px',
-                borderRadius: '8px',
-                border: '1px solid #D1D5DB',
-                fontSize: '14px',
-                width: '100%',
-                resize: 'vertical',
-              }}
-            ></textarea>
-
+          <h3 style={{ fontSize: '20px', marginBottom: '24px' }}>Get Started</h3>
+          <form>
+            <div style={{ marginBottom: '16px' }}>
+              <input type="text" placeholder="Enter your Name" style={inputStyle} />
+            </div>
+            <div style={{ marginBottom: '16px' }}>
+              <input type="email" placeholder="Enter your email" style={inputStyle} />
+            </div>
+            <div style={{ marginBottom: '24px' }}>
+              <textarea
+                placeholder="What can we help you with?"
+                style={{ ...inputStyle, height: '100px', resize: 'none' }}
+              />
+            </div>
             <button
               type="submit"
               style={{
-                backgroundColor: '#fbbf24',
-                color: '#111827',
+                background: '#FBBF24',
                 border: 'none',
-                padding: '12px',
-                borderRadius: '8px',
+                color: '#000',
                 fontWeight: 'bold',
+                padding: '12px 24px',
+                width: '100%',
+                borderRadius: '8px',
                 cursor: 'pointer',
               }}
             >
-              Send Message
+              Send Request
             </button>
           </form>
+        </div>
+
+        {/* Image Section */}
+        <div
+          style={{
+            flex: '1 1 100%',
+            maxWidth: '500px',
+            width: '100%',
+            textAlign: 'center',
+            margin: '0 auto',
+          }}
+        >
+          <img
+            src={agentsImage}
+            alt="Support Agents"
+            style={{
+              width: '100%',
+              borderRadius: '12px',
+              boxShadow: '0 6px 20px rgba(0,0,0,0.1)',
+              maxHeight: '400px',
+              objectFit: 'cover',
+            }}
+          />
         </div>
       </div>
 
@@ -117,4 +118,14 @@ const ContactUsPage: React.FC = () => {
   );
 };
 
-export default ContactUsPage;
+const inputStyle: React.CSSProperties = {
+  width: '100%',
+  padding: '12px',
+  borderRadius: '8px',
+  border: '1px solid #ccc',
+  fontSize: '14px',
+  fontFamily: 'inherit',
+  boxSizing: 'border-box',
+};
+
+export default ContactPage;
