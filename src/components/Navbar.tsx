@@ -18,8 +18,9 @@ const Navbar: React.FC = () => {
   const navItems = [
     { label: 'Home', path: '/' },
     { label: 'Core Values', path: '/core-values' },
-    { label: 'FAQs', path: '#faqs' },
-    { label: 'About Us', path: '#about-us' },
+    { label: 'FAQs', path: '/faqs' },
+    { label: 'T&C', path: '/terms' },
+
   ];
 
   return (
@@ -67,6 +68,7 @@ const Navbar: React.FC = () => {
                 );
               })}
             </ul>
+            <Link to="/contact">
             <button
               style={{
                 backgroundColor: '#f4a261',
@@ -80,6 +82,7 @@ const Navbar: React.FC = () => {
             >
               Contact Us
             </button>
+            </Link>
           </div>
         )}
 
