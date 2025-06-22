@@ -18,9 +18,8 @@ const Navbar: React.FC = () => {
   const navItems = [
     { label: 'Home', path: '/' },
     { label: 'Core Values', path: '/core-values' },
-    { label: 'FAQs', path: '/faqs' },
+    { label: 'FAQs', path: '/faq' },
     { label: 'T&C', path: '/terms' },
-
   ];
 
   return (
@@ -42,7 +41,9 @@ const Navbar: React.FC = () => {
         alignItems: 'center',
       }}>
         {/* Logo */}
-        <img src={logo} alt="ViewMe Logo" style={{ height: '40px' }} />
+        <Link to="/">
+          <img src={logo} alt="ViewMe Logo" style={{ height: '40px' }} />
+        </Link>
 
         {/* Desktop Nav Links */}
         {!isMobile && (
@@ -68,7 +69,6 @@ const Navbar: React.FC = () => {
                 );
               })}
             </ul>
-            <Link to="/contact">
             <button
               style={{
                 backgroundColor: '#f4a261',
@@ -79,10 +79,10 @@ const Navbar: React.FC = () => {
                 cursor: 'pointer',
                 fontWeight: 500,
               }}
+              onClick={() => window.location.href = '/contact'}
             >
               Contact Us
             </button>
-            </Link>
           </div>
         )}
 
@@ -120,6 +120,19 @@ const Navbar: React.FC = () => {
               {item.label}
             </Link>
           ))}
+
+          {/* Mobile-only Contact Us link */}
+          <Link
+            to="/contact"
+            onClick={() => setMenuOpen(false)}
+            style={{
+              textDecoration: 'none',
+              color: location.pathname === '/contact' ? '#f4a261' : '#666',
+              fontWeight: 500,
+            }}
+          >
+            Contact Us
+          </Link>
         </div>
       )}
     </nav>
