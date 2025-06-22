@@ -86,19 +86,24 @@ const FooterSection = () => {
               />
             ))}
             <button
-              style={{
-                width: '40px',
-                height: '40px',
-                borderRadius: '50%',
-                border: '2px solid #F9BF1F',
-                backgroundColor: 'transparent',
-                color: '#F9BF1F',
-                fontSize: '18px',
-                cursor: 'pointer',
-              }}
-            >
-              ▶
-            </button>
+  style={{
+    width: '40px',
+    height: '40px',
+    borderRadius: '50%',
+    border: '2px solid #F9BF1F',
+    backgroundColor: 'transparent',
+    color: '#F9BF1F',
+    fontSize: '16px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 0,
+    cursor: 'pointer',
+  }}
+>
+  ▶
+</button>
+
           </div>
         </motion.div>
 
@@ -215,18 +220,24 @@ const FooterSection = () => {
               }}
             />
             <button
-              style={{
-                backgroundColor: '#F9BF1F',
-                border: 'none',
-                borderRadius: '50%',
-                width: '32px',
-                height: '32px',
-                fontWeight: 'bold',
-                cursor: 'pointer',
-              }}
-            >
-              →
-            </button>
+  style={{
+    backgroundColor: '#F9BF1F',
+    border: 'none',
+    borderRadius: '50%',
+    width: '32px',
+    height: '32px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontWeight: 'bold',
+    fontSize: '18px',
+    cursor: 'pointer',
+    padding: 0,
+  }}
+>
+  →
+</button>
+
           </div>
         </div>
 
